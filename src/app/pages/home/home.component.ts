@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { EventService } from '../../service/event.service';
+import { IAPIResponse, IEvent } from '../../model/model';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,21 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
+  eventList: IEvent [] = []
+  eventService= inject(EventService)
+
+  ngOnInit(): void {
+    debugger;
+    this.getEvents()
+  }
+
+  getEvents(){
+    debugger;
+    this.eventService.getAllEvents().subscribe((res: IAPIResponse) => {
+      debugger;
+      this.eventList = res.data
+    })
+  }
 }
