@@ -12,7 +12,6 @@ export class EventService {
   constructor(private http: HttpClient ) { }
 
   getAllEvents(){
-    debugger;
     return this.http.get<IAPIResponse>(`${this.apiUrl}GetAllEvents`); // Replace with your API endpoint
   }
 }

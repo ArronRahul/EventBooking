@@ -15,7 +15,7 @@
                         <img class="card-img-top" [src]="item.imageUrl" [alt]="item.eventName">
                         <div class="card-body">
                           <h5 class="card-title">{{item.eventName}}</h5>
-                           <a href="#" class="btn btn-primary">Book</a>
+                           <a [routerLink]="['/event/', item.eventId]" class="btn btn-primary">Book</a>
                         </div>
                       </div>
                 </div>
