@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { IAPIResponse, User } from './model/model';
+import { IAPIResponse, ILogin, User } from './model/model';
 import { FormsModule } from '@angular/forms';
 import { EventService } from './service/event.service';
 
@@ -13,6 +13,7 @@ import { EventService } from './service/event.service';
 export class AppComponent {
 
 
+
   title = 'EventBooking';
 
   @ViewChild('modal') model: ElementRef | undefined;
@@ -20,6 +21,8 @@ export class AppComponent {
 
   eventService = inject(EventService);
   isLoginForm: boolean = false;
+
+  loginObj: ILogin = new ILogin();
 
   userObj: any = new User();
 
@@ -44,12 +47,27 @@ export class AppComponent {
     console.log(this.userObj)
     console.log("clicked")
     this.eventService.registerUser(this.userObj).subscribe((res: IAPIResponse) => {
-      debugger;
       if (res.result) {
         alert('User registration successful')
+        this.closeLoginModal()
       }
       else{
         alert('Failed to register user')
+      }
+    })
+  }
+
+  onLogin(){
+    console.log(this.loginObj)
+    this.eventService.loginUser(this.loginObj).subscribe((res: IAPIResponse) => {
+      console.log('login clicked');
+      if (res.result) {
+        alert('User login successful')
+        localStorage.setItem('eventUser', JSON.stringify(res.data));
+        this.closeLoginModal()
+      }
+      else{
+        alert('Failed to login user')
       }
     })
   }

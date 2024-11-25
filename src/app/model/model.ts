@@ -35,3 +35,12 @@ export class User{
         this.Role = "Customer";
     }  
 }
+
+export class ILogin{
+    ContactNo: string;
+    Password: string;
+    constructor(){
+        this.ContactNo = "";
+        this.Password = "";
+    }
+}

@@ -35,6 +35,10 @@ export class EventService {
     return this.http.post<IAPIResponse>(`${this.apiUrl}CreateUser`, obj);
   }
 
+  loginUser(obj:any){
+    return this.http.post<IAPIResponse>(`${this.apiUrl}Login`, obj);
+  }
+
 }
 
 
