@@ -38,23 +38,17 @@
             <div class="col-4">
               <h3>Events By __</h3>
               <div class="row">
-                <div class="col-12">
-                  <div class="card" >
-                    <img class="card-img-top" style="height: 100px !important;" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
-                    <div class="card-body"> 
-                      <a href="#" class="btn btn-primary">Book</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 pt-1">
-                  <div class="card" >
-                    <img class="card-img-top" style="height: 100px !important;" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
-                    <div class="card-body"> 
-                       
-                      <a href="#" class="btn btn-primary">Book</a>
-                    </div>
-                  </div>
-                </div>
+                @for (item of events$| async; track $index) {
+                    <div class="col-12 pt-1">
+                        <div class="card" >
+                          <img class="card-img-top" style="height: 100px !important;" [src]="item.imageUrl" [alt]="item.eventName">
+                          <div class="card-body"> 
+                            <h5 class="card-title">{{item.eventName}}</h5>
+                            <a [routerLink]="['/event/', item.eventId]" class="btn btn-primary">Book</a>
+                          </div>
+                        </div>
+                      </div>
+                    }
               </div>
             </div>
         </div> 
