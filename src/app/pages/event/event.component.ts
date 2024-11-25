@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EventService } from '../../service/event.service';
 import { Observable, switchMap } from 'rxjs';
 import { IEvent } from '../../model/model';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-event',
