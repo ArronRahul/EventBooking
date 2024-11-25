@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAPIResponse, IEvent } from '../model/model';
+import { IAPIResponse, IEvent, User } from '../model/model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -31,6 +31,10 @@ export class EventService {
       })
     )
   }
+  registerUser(obj:User){
+    return this.http.post<IAPIResponse>(`${this.apiUrl}CreateUser`, obj);
+  }
+
 }
 
 

@@ -36,7 +36,7 @@
             
             </div>
             <div class="col-4">
-              <h3>Events By __</h3>
+              <h3>Events By {{eventData.organizerName}}</h3>
               <div class="row">
                 @for (item of events$| async; track $index) {
                     <div class="col-12 pt-1">
