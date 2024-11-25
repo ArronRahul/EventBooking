@@ -1,1 +1,62 @@
-<p>event works!</p>
+<section class="schedule-section spad pt-4">
+    <div class="container" *ngIf="eventData$ | async as eventData">
+       
+        <div class="row">
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <img class="card-img-top" [src]="eventData.imageUrl" [alt]="eventData.eventName">
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>{{eventData.eventName}}</h2>
+                        <p>{{eventData.organizerName}}</p>
+                    </div>
+                </div>
+                <div class="col-6 text-end">
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Book Now</button>
+                </div>
+                <div class="col-6">
+                  Start Time: {{eventData.startTime}}
+                </div>
+                <div class="col-6 text-end">
+                  End Time: {{eventData.endTime}}
+                </div>
+                <div class="col-12 text-end">
+                  <p>location:{{eventData.location}} </p>
+                </div>
+                <div class="col-12 pt-1">
+                  <p>
+                    Evenet Description
+                  </p>
+                </div>
+            </div>
+            
+            </div>
+            <div class="col-4">
+              <h3>Events By __</h3>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card" >
+                    <img class="card-img-top" style="height: 100px !important;" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body"> 
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pt-1">
+                  <div class="card" >
+                    <img class="card-img-top" style="height: 100px !important;" src="https://themewagon.github.io/manup/img/schedule/schedule-1.jpg" alt="Card image cap">
+                    <div class="card-body"> 
+                       
+                      <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+    </div>
+</section>

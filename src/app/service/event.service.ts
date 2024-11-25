@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAPIResponse } from '../model/model';
+import { IAPIResponse, IEvent } from '../model/model';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,14 @@ export class EventService {
   getAllEvents(){
     return this.http.get<IAPIResponse>(`${this.apiUrl}GetAllEvents`); // Replace with your API endpoint
   }
+
+  getEventById(eventId: number){
+    return this.http.get<IEvent>(`${this.apiUrl}GetEventById?id=${eventId}`).pipe(
+      map((item: any) =>{ 
+        return item.data;
+      })
+    )
+  }
 }
+
+
