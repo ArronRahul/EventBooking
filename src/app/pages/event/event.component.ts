@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EventService } from '../../service/event.service';
 import { Observable, switchMap } from 'rxjs';
@@ -12,6 +12,8 @@ import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
   styleUrl: './event.component.css'
 })
 export class EventComponent {
+
+  @ViewChild('modal') model: ElementRef | undefined;
 
   eventData$: Observable<IEvent>;
   events$: Observable<IEvent[]>;
@@ -27,4 +29,23 @@ export class EventComponent {
       switchMap(event => this.eventService.getEventByOraganizer(event.organizerId))
     );
   }
+
+  openBookingModal(): void {
+    console.log('Booking button clicked'); // Debug log
+    if (this.model) {
+      this.model.nativeElement.style.display = 'block';
+    } else {
+      console.warn('Model element is not available');
+    }
+  }
+
+  closeBookingModal(){
+    if (this.model) {
+      this.model.nativeElement.style.display = 'none'; // Hide the modal
+    } else {
+      console.warn('Model element is not available');
+    }
+  }
+    
 }
+
