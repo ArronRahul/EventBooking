@@ -26,6 +26,14 @@ export class AppComponent {
 
   userObj: any = new User();
 
+
+  constructor() {
+    const loggedData= localStorage.getItem('eventUser');
+    if(loggedData != null){
+      this.userObj = JSON.parse(loggedData);
+    }
+  }
+
   openLoginModal(): void {
     console.log('Login button clicked'); // Debug log
     if (this.model) {
@@ -64,11 +72,16 @@ export class AppComponent {
       if (res.result) {
         alert('User login successful')
         localStorage.setItem('eventUser', JSON.stringify(res.data));
+        this.userObj = res.data
         this.closeLoginModal()
       }
       else{
         alert('Failed to login user')
       }
     })
+  }
+  logoff(){
+    localStorage.removeItem('eventUser');
+    this.userObj = new User();
   }
 }
