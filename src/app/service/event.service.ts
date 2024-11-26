@@ -39,6 +39,10 @@ export class EventService {
     return this.http.post<IAPIResponse>(`${this.apiUrl}Login`, obj);
   }
 
+  book(obj:any){
+    return this.http.post<IAPIResponse>(`${this.apiUrl}bookevent`, obj);
+  }
+
 }
 
 

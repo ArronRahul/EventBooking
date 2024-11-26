@@ -74,46 +74,39 @@
                   <thead>
                     <tr>
                       <td>
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" [(ngModel)]="members.Name" value="" name="Name" class="form-control" placeholder="Name">
                       </td>
                       <td>
-                        <input type="text" class="form-control" placeholder="Age">
+                        <input type="text" [(ngModel)]="members.Age" name="Age" class="form-control" placeholder="Age">
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select class="form-select" [(ngModel)]="members.IdentityCard" name="IdentityCard">
                           <option value="">Select Indentity Proof</option>
                           <option value="Aadhar Card">Aadhar Card</option>
                           <option value="Pan Card">Pan Card</option>
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" placeholder="Car No">
+                        <input type="text" class="form-control" [(ngModel)]="members.CardNo" name="CardNo" placeholder="Card No">
                       </td>
                       <td>
-                        <input type="text" class="form-control" placeholder="Mobile No">
+                        <input type="text" class="form-control" [(ngModel)]="members.ContactNo" name="ContactNo" placeholder="Mobile No">
                       </td>
                       <td>
-                       <button class="btn btn-sm btn-primary">Add</button>
+                       <button class="btn btn-sm btn-primary" (click)="addMember()">Add</button>
                       </td>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>text</td>
-                      <td>text</td>
-                      <td>text</td>
-                      <td>text</td>
-                      <td>text</td> 
-
-                    </tr>
-                    <tr>
-                      <td>test</td>
-                      <td>test</td>
-                      <td>test</td>
-                      <td>test</td>
-                      <td>test</td> 
-                      
-                    </tr>
+                    @for (item of bookingObj.EventBookingmembers; track $index) {
+                        <tr>
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Age}}</td>
+                            <td>{{item.IdentityCard}}</td>
+                            <td>{{item.CardNo}}</td>
+                            <td>{{item.ContactNo}}</td> 
+                          </tr>
+                    }
                   </tbody>
                   
                 </table>
@@ -124,7 +117,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeBookingModal()">Cancel</button>
-          <button type="button" class="btn btn-success" >Book Ticket</button>
+          <button type="button" class="btn btn-success" click="onBooking()">Book Ticket</button>
         </div>
   
       </div>
